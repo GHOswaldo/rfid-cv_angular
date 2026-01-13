@@ -1,0 +1,22 @@
+{
+  "hosting": [
+    {
+      "target": "rfid-cv-hosting", 
+      "public": "dist/redesitas/browser",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ],
+  "database": {
+    "rules": "database.rules.json"
+  }
+}

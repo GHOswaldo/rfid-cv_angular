@@ -1,0 +1,29 @@
+{
+  "rules": {
+    // Por defecto, nadie puede leer ni escribir en la raíz
+    ".read": false,
+    ".write": false,
+
+    "empleados": {
+      // Solo usuarios autenticados (tu Admin Web) pueden leer/modificar empleados
+      ".read": "auth != null",
+      ".write": "auth != null",
+      // Validamos que al guardar, al menos tenga un nombre (opcional)
+      "$uid": {
+        ".validate": "newData.hasChildren(['nombre', 'numeroEmpleado'])"
+      }
+    },
+
+    "asistencia_logs": {
+      // Indexamos por timestamp para que el gráfico del Dashboard sea rápido
+      ".indexOn": ["timestamp"],
+      
+      // Solo el Admin Web puede leer (para el gráfico)
+      ".read": "auth != null",
+      
+      // El Admin Web puede escribir (por si necesitas borrar logs antiguos)
+      // NOTA: El ESP32 escribe aquí usando el Secreto, así que no necesita esta regla explícita.
+      ".write": "auth != null"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "redesita-574b3"
+  },
+  "targets": {
+    "redesita-574b3": {
+      "hosting": {
+        "rfid-cv-hosting": [
+          "rfid-cv"
+        ]
+      }
+    }
+  }
+}
